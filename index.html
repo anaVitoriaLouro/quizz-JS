@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizz Programação</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1 id="main-title">Quizz de Programação</h1>
+
+    <!-- SCORE BOARD -->
+    <div id="score-container">
+        <p id="display-score"><span>90</span>%</p>
+        <p>Você acertou <span id="correct-answer">0</span> de <span id="questions-qty">10</span></p>
+        <button id="restart">Refazer quizz!</button>
+    </div>
+
+    <!-- QUIZZ CONTAINER -->
+    <div id="quizz-container">
+        <p id="question">
+            <span id="question-number">1</span> - <span id="question-text">Lorem Ipsum?</span>
+        </p>
+    </div>
+
+    <!-- ANSWERS CONTAINER -->
+    <div id="answers-box">
+        <button><span class="correct-answer">a</span> <span class="question-answer">M</span></button>
+        <button><span class="wrong-answer">b</span> <span class="question-answer">M</span></button>
+        <button><span class="btn-letter">c</span> <span class="question-answer">M</span></button>
+        <button><span class="btn-letter">d</span> <span class="question-answer">M</span></button>
+    </div>
+
+
+    <!-- TEMPLATE ANSWER -->
+    <button class="answer-template hide"><span class="btn-letter">a</span> <span class="question-answer">M</span></button>
+
+</body>
+</html>
