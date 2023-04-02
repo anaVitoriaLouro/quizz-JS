@@ -97,7 +97,7 @@ function createQuestion(i) {
     questionNumber.textContent = i + 1;
 
     // Insere as alternativas na tela
-    question[i].answers.forEach(function (answer, i) {
+    questions[i].answers.forEach(function (answer, i) {
         // cria o template do botão
         const answerTemplate = document.querySelector(".answer-template").cloneNode(true);
 
@@ -110,22 +110,63 @@ function createQuestion(i) {
         answerTemplate.setAttribute("correct-answer", answer["correct"]);
 
         // Remove a classe hide e template
-        answerTemplate.classList.remove(".hide");
-        answerTemplate.classList.remove(".answer-template");
+        answerTemplate.classList.remove("hide");
+        answerTemplate.classList.remove("answer-template");
 
         // Inserir a alternativa na tela
         answersBox.appendChild(answerTemplate);
 
         // Inserir evento de click nos botões
-        answerTemplate.addEventListener("click", function() {
-
+        answerTemplate.addEventListener("click", function () {
+            checkAnswer(this);
         });
 
-
-        // Incrementar o número da questão
-        actualQuestion++;
-
     });
+
+    // Incrementar o número da questão
+    actualQuestion++;
+
+}
+
+// Verificando a resposta do usuário
+function checkAnswer(btn) {
+    // Selecionando todos os botões
+    const buttons = answersBox.querySelectorAll("button");
+
+    // Verificando se a resposta está correta e adiciona classes nos botões
+    buttons.forEach(function (button) {
+        if (button.getAttribute("correct-answer") === "true") {
+            button.classList.add("correct-answer");
+
+            //checa se o usuário acertou a pergunta
+            if (btn === button) {
+                // Incremento dos pontos
+                points++;
+            }
+        } else {
+            button.classList.add("wrong-answer");
+        }
+    });
+
+    // Exibir próxima pergunta
+    nextQuestion();
+}
+
+// Mostra próxima pergunta no quizz
+function nextQuestion() {
+    // timer para usuário ver as respostas
+    setTimeout(function () {
+
+        // Verifica se ainda há perguntas
+        if (actualQuestion >= questions.length) {
+        // apresenta ma msg de sucesso
+        showSuccessMessage();
+        return;
+        }
+
+        createQuestion(actualQuestion);
+
+    }, 700);
 }
 
 // Inicialização do Quizz
