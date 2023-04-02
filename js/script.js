@@ -116,8 +116,14 @@ function createQuestion(i) {
         // Inserir a alternativa na tela
         answersBox.appendChild(answerTemplate);
 
+        // Inserir evento de click nos botões
+        answerTemplate.addEventListener("click", function() {
 
-        
+        });
+
+
+        // Incrementar o número da questão
+        actualQuestion++;
 
     });
 }
